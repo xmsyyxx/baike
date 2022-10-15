@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+
+.introductions {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  font-weight: 400;
+  font-size: 1rem;
+  color: $wiki-description-black;
+}
+
+@media screen and (min-width: 500px) {
+  .introductions {
+    margin-bottom: 5rem;
+  }
+}

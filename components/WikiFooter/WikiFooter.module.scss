@@ -1,0 +1,132 @@
+@import "../../styles/variables.scss";
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: $wiki-footer-gray;
+  font-weight: 400;
+  z-index: 10;
+  padding: 0 50px;
+  font-size: 0.8rem;
+}
+
+.footer.scroll {
+  position: relative;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  color: $wiki-content-black;
+  padding: 20px 0;
+  width: 100%;
+  max-width: $wiki-max-width;
+  min-width: $wiki-min-width;
+  margin: auto;
+  font-size: 0.75rem;
+
+  span {
+    line-height: 1.5;
+    font-weight: 400;
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.copyright {
+  .name {
+    border-bottom: solid 1px #c8ccd1;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .ersswiki {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-right: 0.25rem;
+  }
+}
+
+.copyright {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  margin: auto 0;
+}
+
+.tips {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pcshow {
+  display: block;
+}
+
+.home {
+  .homehide {
+    display: none;
+  }
+
+  &.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $wiki-common-white;
+    z-index: 1;
+    color: $wiki-description-gray;
+
+    .box {
+      display: block;
+      position: relative;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .fill,
+    .tips {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .footer {
+    padding: 0;
+    /* font-size: 10px; */
+    background: $wiki-common-white;
+    // border-top: 0.5rem solid $wiki-footer-light-gray;
+    text-align: left;
+    position: relative;
+    border-top: 1px solid #c8ccd1;
+    background-color: #eaecf0;
+  }
+
+  .footer.home {
+    border-top: none;
+  }
+
+  .box {
+    padding: 1rem;
+    padding-bottom: 3rem;
+    max-width: 100%;
+    min-width: 0;
+    flex-direction: column;
+  }
+
+  .tips {
+    display: none;
+  }
+
+  .pcshow {
+    display: none;
+  }
+}

@@ -1,0 +1,43 @@
+.backtop {
+  border: 1px solid rgb(221, 221, 221);
+  text-align: center;
+  position: fixed;
+  z-index: 999999;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgb(0 0 0 / 12%) 0px 2px 7px 0px;
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  border-radius: 50%;
+  bottom: 3rem;
+  right: 0.5rem;
+  cursor: pointer;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fadein {
+  animation: fadein 0.5s;
+}
+
+.fadeout {
+  animation: fadeout 0.5s;
+}

@@ -1,0 +1,65 @@
+.box {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 30px;
+  user-select: none;
+}
+
+.image img {
+  width: 8rem;
+  height: auto;
+  pointer-events: none;
+}
+
+.text {
+  font-size: 2rem;
+}
+
+.tips {
+  font-size: 0.5rem;
+  float: right;
+}
+
+.isfooter {
+  .text,
+  .tips {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .image img {
+    width: 160px;
+    min-width: 8rem;
+    height: auto;
+  }
+
+  .text {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .home {
+    .logo {
+      display: flex;
+      flex-direction: row;
+      width: auto;
+      max-width: 100%;
+    }
+
+    .box img {
+      width: 5rem;
+    }
+
+    .text {
+      margin: auto;
+      font-size: 2.5rem;
+    }
+
+    .tips {
+      margin: auto;
+      transform: translateY(-2em);
+    }
+  }
+}
