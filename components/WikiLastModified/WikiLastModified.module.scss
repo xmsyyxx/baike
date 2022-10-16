@@ -1,0 +1,30 @@
+.modified {
+  display: block;
+  // border-bottom: solid 1px #c8ccd1;
+  // border-top: solid 1px #c8ccd1;
+  // background-color: #eaecf0;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.box {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.maim {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  margin: auto 0;
+}
+
+.icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}

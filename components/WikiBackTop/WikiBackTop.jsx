@@ -1,12 +1,15 @@
 import classNames from "classnames";
+import { useMount } from "../../lib/hooks";
 import { useEffect, useState } from "react";
 import IconBackTop from "../icons/IconBackTop";
 import styles from "./WikiBackTop.module.scss";
 
+let isLastStartScroll = false;
+
 export default function WikiBackTop() {
 	const [isFadeIn, setIsFadeIn] = useState(false);
 	const [isFadeOut, setIsFadeOut] = useState(false);
-	const [isStartScroll, setIsStartScroll] = useState(false);
+	// const [isStartScroll, setIsStartScroll] = useState(false);
 
 	const onClick = () => {
 		window.scrollTo({
@@ -16,33 +19,34 @@ export default function WikiBackTop() {
 		});
 	};
 
-	useEffect(() => {
+	useMount(() => {
+		isLastStartScroll = false;
 		window.document.addEventListener("scroll", () => {
 			if (window.scrollY > 250) {
-				if (isStartScroll) return;
-				setIsStartScroll(true);
-				setIsFadeIn(true);
+				if (isLastStartScroll) return;
 				setTimeout(() => {
 					setIsFadeIn(false);
 				}, 300);
+				isLastStartScroll = true;
+				setIsFadeIn(true);
 			} else {
-				if (!isStartScroll) return;
-				setIsFadeOut(true);
+				if (!isLastStartScroll) return;
 				setTimeout(() => {
-					setIsStartScroll(false);
+					isLastStartScroll = false;
 					setIsFadeOut(false);
 				}, 300);
+				setIsFadeOut(true);
 			}
 		});
 	});
 
+	if (!isLastStartScroll) return null;
 	return (
 		<div
 			className={classNames(styles.backtop, {
 				[styles.fadein]: isFadeIn,
 				[styles.fadeout]: isFadeOut,
 			})}
-			style={{ display: isStartScroll ? "block" : "none" }}
 			onClick={onClick}
 		>
 			<IconBackTop />
