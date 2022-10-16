@@ -1,5 +1,11 @@
 @import "../../styles/variables.scss";
 
+.main {
+  min-height: 100vh;
+  background-color: #fff;
+  background-color: #f2f2f2;
+}
+
 .contents {
   text-align: left;
   padding-top: 60px;

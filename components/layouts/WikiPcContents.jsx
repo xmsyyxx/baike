@@ -10,9 +10,11 @@ export default function WikiPcContents({ children }) {
 					overflow-x: auto;
 				}
 			`}</style>
-			<WikiPcHeader />
-			<div className={styles.contents}>{children}</div>
-			<WikiFooter />
+			<div className={styles.main}>
+				<WikiPcHeader />
+				<div className={styles.contents}>{children}</div>
+				<WikiFooter />
+			</div>
 		</>
 	);
 }

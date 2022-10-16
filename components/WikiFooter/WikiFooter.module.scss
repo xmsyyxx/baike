@@ -1,7 +1,7 @@
 @import "../../styles/variables.scss";
 
 .footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   background-color: $wiki-footer-gray;
@@ -9,10 +9,6 @@
   z-index: 10;
   padding: 0 50px;
   font-size: 0.8rem;
-}
-
-.footer.scroll {
-  position: relative;
 }
 
 .box {

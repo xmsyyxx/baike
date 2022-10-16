@@ -1,1 +1,17 @@
 @import "../../styles/variables.scss";
+
+.content {
+	display: flex;
+	flex-direction: column;
+	max-width: $wiki-max-width;
+	min-width: $wiki-min-width;
+	height: 100%;
+	margin: 0 auto;
+	min-height: 70vh;
+}
+
+.article {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem 0;
+}
