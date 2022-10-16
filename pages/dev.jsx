@@ -1,25 +1,21 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
-const WikiPcStatus = dynamic(() =>
-	import("../components/WikiStatus/WikiPcStatus")
+const WikiPcSearch = dynamic(() =>
+	import("../components/WikiSearch/WikiPcSearch")
 );
 
-import { getPostBySlug } from "../lib/api";
+import { getAllPosts } from "../lib/api";
 import { useMount } from "../lib/hooks";
 
 export const getStaticProps = async () => {
-	const post = getPostBySlug("厦门市音乐学校", ["title", "content", "info"]);
+	const allPosts = getAllPosts(["title"]);
 
 	return {
-		props: { post },
+		props: { allPosts },
 	};
 };
 
-export default function Dev({ post }) {
-	useMount(() => {
-		window.post = post;
-	});
-
+export default function Dev({ allPosts }) {
 	return (
 		<>
 			<Head>
@@ -43,10 +39,23 @@ export default function Dev({ post }) {
 				h2 {
 					margin-top: 40px;
 				}
+
+				.SearchDev input {
+					height: 3rem;
+					font-size: 1rem;
+				}
 			`}</style>
 			<div className="DevPage">
 				<h1>百科组件测试页面</h1>
 
+				<div class="SearchDev">
+					<WikiPcSearch
+						allPosts={allPosts}
+						style={{
+							width: "100%",
+						}}
+					/>
+				</div>
 				{/*<h2>WikiAudio 音频组件</h2>
 				<WikiAudio
 					src="https://wikioss.xhemj.work/krzfs/wiki-media/4d799f987a66e00ce6699def290a2c68.mp3"

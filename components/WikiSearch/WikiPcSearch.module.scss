@@ -1,0 +1,90 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.search {
+  font-size: 1.5rem;
+  width: 33.33%; /* 8/24 */
+  text-align: center;
+  color: $wiki-search-black;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 200;
+}
+
+.input {
+  height: 40px;
+  margin: auto;
+  width: 100%;
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 2rem;
+    font-size: 0.8rem;
+    color: $wiki-search-black;
+    outline: 0;
+    margin-bottom: 0;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: 0;
+    transform: translateY(-0.5rem);
+    border-radius: 4px;
+    background-color: $wiki-search-mirror-gray;
+    border: 1px $wiki-header-gray solid;
+    text-align: left;
+
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+
+    @include wiki-input-icon($wiki-search-mirror-gray);
+
+    &:focus,
+    &:hover,
+    &.inputQuery {
+      background-color: $wiki-common-white;
+      border: 1px $wiki-search-gray solid;
+    }
+  }
+}
+
+.link {
+  width: 100%;
+  line-height: 44px;
+
+  &:hover {
+    background-color: $wiki-search-light-gray;
+  }
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: $wiki-common-white;
+  padding: 1rem;
+  padding-top: 0;
+  overflow-y: auto;
+  max-height: 250px;
+  box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+  border-bottom: 1px solid $wiki-search-border-gray;
+  transform: translateY(-0.5rem);
+}
+
+.item {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 1rem;
+  border-bottom: 1px solid $wiki-suggest-border-gray;
+  color: $wiki-search-black;
+}
+
+.itemTips {
+  position: relative;
+  font-size: 1rem;
+  border-bottom: 1px solid $wiki-suggest-border-gray;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
