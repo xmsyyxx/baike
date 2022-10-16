@@ -1,0 +1,43 @@
+@import "../../styles/variables.scss";
+
+.tags {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.list {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	padding: 0;
+	margin: 1rem;
+	margin-top: 0;
+}
+
+.item {
+	word-break: break-word;
+	border: 1px solid $wiki-card-border-gray;
+	border-radius: 6px;
+	background-color: $wiki-card-gray;
+	padding: 0 5px;
+	font-weight: 500;
+
+	// &::before {
+	//   content: "# ";
+	// }
+
+	&:not(:first-child) {
+		margin-left: 1rem;
+	}
+}
+
+@media only screen and (min-width: 500px) {
+	.tags {
+		width: $wiki-left-space;
+	}
+
+	.list {
+		margin-bottom: 0;
+	}
+}

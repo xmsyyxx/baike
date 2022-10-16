@@ -1,0 +1,35 @@
+@import "../../styles/variables.scss";
+
+.video {
+	text-align: center;
+	margin: 0.5rem 0;
+}
+
+.box {
+	width: 100%;
+}
+
+@media only screen and (min-width: 500px) {
+	.box {
+		width: auto;
+		height: auto;
+		min-width: calc($wiki-min-width * 0.69);
+		min-height: 350px;
+		padding: 0.5rem;
+	}
+}
+
+.description {
+	display: flex;
+	flex-direction: column;
+	color: $wiki-description-gray;
+	font-size: 0.8rem;
+}
+
+.tips {
+	line-height: 0;
+}
+
+.tipsIcon {
+	font-size: 1rem;
+}

@@ -1,0 +1,74 @@
+@import "../../styles/variables.scss";
+
+.header {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  color: $wiki-content-black;
+  line-height: 44px;
+  background-color: $wiki-header-mirror-gray;
+  user-select: none;
+  z-index: 1000;
+  width: 100%;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid $wiki-border-gray;
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
+  border-image: linear-gradient(
+    $wiki-header-light-gray,
+    $wiki-header-light-gray
+  );
+}
+
+.logo > a {
+  color: $wiki-content-black;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  max-width: $wiki-max-width;
+  min-width: $wiki-min-width;
+  justify-content: space-around;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 1.5rem;
+  width: 16.67%; /* 4/24 */
+  font-weight: 700;
+  text-align: center;
+}
+
+.logoItem {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.image img {
+  width: 40px;
+}
+
+.tips {
+  display: flex;
+  width: 50%; /* 12/24 */
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 1rem;
+}
+
+.tips-item {
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.language {
+  margin-left: 1rem;
+}

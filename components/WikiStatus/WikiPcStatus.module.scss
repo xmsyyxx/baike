@@ -1,0 +1,65 @@
+@import "../../styles/variables.scss";
+
+.status {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  border: 1px solid $wiki-card-border-gray;
+  border-radius: 5px;
+  background-color: $wiki-card-gray;
+  text-align: left;
+}
+
+.tips {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  color: $wiki-description-black;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+  }
+}
+
+.item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  float: left;
+  color: $wiki-content-black;
+  word-wrap: break-word;
+  width: 33.33%;
+  max-width: 33.33%;
+  border-bottom: 1px solid $wiki-border-gray;
+}
+
+.text {
+  margin-left: 0;
+  color: $wiki-description-black;
+  word-wrap: break-word;
+  width: 66.67%;
+  max-width: 66.67%;
+  border-bottom: 1px solid $wiki-border-gray;
+}

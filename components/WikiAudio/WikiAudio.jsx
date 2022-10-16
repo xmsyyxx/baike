@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useMount } from "../../lib/hooks";
 import { loadCss, loadJs } from "../../lib/init";
 import IconUp from "../icons/IconUp";
 import styles from "./WikiAudio.module.scss";
@@ -11,7 +12,7 @@ export default function WikiAudio(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const playerBoxRef = React.createRef();
 
-  useEffect(() => {
+  useMount(() => {
     // 为什么嵌套两个 Promise 而不直接 Promise.all ？
     // 因为部分浏览器不支持 Promise.all （指微信QQ这类）
     loadJs("https://staticoss.xhemj.work/npm/aplayer/1.10.1/APlayer.min.js")
@@ -39,7 +40,6 @@ export default function WikiAudio(props) {
         player.on("loadedmetadata", () => {
           setIsLoaded(true);
         });
-        window.WikiAudioPlayer = player;
       });
   });
 
