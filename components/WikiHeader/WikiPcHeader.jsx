@@ -1,5 +1,6 @@
 import Link from "next/link";
 import IconHome from "../icons/IconHome";
+import WikiPcSearch from "../WikiSearch/WikiPcSearch";
 import styles from "./WikiPcHeader.module.scss";
 
 export default function WikiPcHeader() {
@@ -18,7 +19,7 @@ export default function WikiPcHeader() {
 					</div>
 					<Link href="/">耳斯百科</Link>
 				</div>
-				{/*<WikiPcSearch />*/}
+				<WikiPcSearch />
 				<div className={styles.tips}></div>
 			</div>
 		</div>

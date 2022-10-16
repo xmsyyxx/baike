@@ -1,0 +1,11 @@
+@import "../../styles/variables.scss";
+
+.contents {
+  text-align: left;
+  padding-top: 60px;
+  background-color: $wiki-common-white;
+  word-break: break-word;
+
+  display: flex;
+  height: 100%;
+}

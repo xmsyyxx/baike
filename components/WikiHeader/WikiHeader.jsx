@@ -1,5 +1,6 @@
 import Link from "next/link";
 import IconHome from "../icons/IconHome";
+// import WikiSearch from "../WikiSearch/WikiSearch"
 import styles from "./WikiHeader.module.scss";
 
 export default function WikiHeader() {

@@ -29,7 +29,7 @@
     padding-left: 0.8rem;
     padding-right: 0.8rem;
     padding-top: 0;
-    transform: translateY(-0.5rem);
+    transform: translateY(0.5em);
     border-radius: 4px;
     background-color: $wiki-search-mirror-gray;
     border: 1px $wiki-header-gray solid;
@@ -63,13 +63,13 @@
   margin: 0;
   padding: 0;
   background-color: $wiki-common-white;
-  padding: 1rem;
+  // padding: 1rem;
   padding-top: 0;
   overflow-y: auto;
   max-height: 250px;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
   border-bottom: 1px solid $wiki-search-border-gray;
-  transform: translateY(-0.5rem);
+  // transform: translateY(-0.5em);
 }
 
 .item {

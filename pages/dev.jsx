@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
-const WikiPcSearch = dynamic(() =>
-	import("../components/WikiSearch/WikiPcSearch")
+const WikiRenderer = dynamic(() =>
+	import("../components/WikiRenderer/WikiRenderer")
 );
 
 import { getAllPosts } from "../lib/api";
@@ -48,14 +48,17 @@ export default function Dev({ allPosts }) {
 			<div className="DevPage">
 				<h1>百科组件测试页面</h1>
 
-				<div class="SearchDev">
+				<WikiRenderer data={`[https://baidu.com](https://baidu.com)`} />
+
+				{/*<div className="SearchDev">
 					<WikiPcSearch
 						allPosts={allPosts}
 						style={{
 							width: "100%",
 						}}
 					/>
-				</div>
+				</div>*/}
+
 				{/*<h2>WikiAudio 音频组件</h2>
 				<WikiAudio
 					src="https://wikioss.xhemj.work/krzfs/wiki-media/4d799f987a66e00ce6699def290a2c68.mp3"
