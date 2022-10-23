@@ -2,11 +2,11 @@ import classNames from "classNames";
 import WikiHeader from "./WikiHeader";
 import WikiPcHeader from "./WikiPcHeader";
 
-export default function Header() {
+export default function Header(props) {
 	return (
 		<>
-			<WikiHeader />
-			<WikiPcHeader />
+			<WikiHeader {...props} />
+			<WikiPcHeader {...props} />
 		</>
 	);
 }

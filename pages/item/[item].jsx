@@ -1,8 +1,6 @@
-import { useRouter } from "next/router";
 import classNames from "classNames";
-import { createElement, Fragment, useEffect, useState } from "react";
+import React, { createElement, Fragment, useEffect, useState } from "react";
 import { getStaticProps, getStaticPaths } from "../../lib/getStaticData";
-
 import WikiRenderer from "../../components/WikiRenderer/WikiRenderer";
 import Header from "../../components/WikiHeader/Header";
 import WikiTitle from "../../components/WikiTitle/WikiTitle";
@@ -58,7 +56,7 @@ export default function WikiItem(props) {
 	return (
 		<>
 			<div className={styles.item}>
-				<Header />
+				<Header title={title} />
 				<div className={styles.box}>
 					<div className={styles.content}>
 						<WikiTitle title={title} description={description} />
@@ -66,10 +64,12 @@ export default function WikiItem(props) {
 						<div className={styles.main}>
 							<div className={styles.left}>
 								{introduction && <WikiBaseIntroductions data={introduction} />}
-								<div className="sm:show">
-									{info && <WikiDetailsList data={info} />}
-								</div>
-								<hr className={styles.hr} />
+								{info && (
+									<div className="sm:show">
+										<WikiDetailsList data={info} />
+									</div>
+								)}
+								<hr className={classNames("sm:show", styles.hr)} />
 								<div className={classNames("wiki-contents", styles.article)}>
 									<WikiRenderer tree={tree} />
 								</div>

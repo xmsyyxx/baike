@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "classNames";
 import { useEffect, useState } from "react";
 import WikiLogo from "../WikiLogo/WikiLogo";
 import styles from "./WikiFooter.module.scss";

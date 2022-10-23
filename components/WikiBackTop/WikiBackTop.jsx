@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "classNames";
 import { useMount } from "../../lib/hooks";
 import { useEffect, useState } from "react";
 import IconBackTop from "../icons/IconBackTop";

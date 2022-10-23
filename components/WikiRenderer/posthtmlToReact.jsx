@@ -22,7 +22,6 @@ const SINGLE_TAGS = new Set([
   "source",
   "track",
   "wbr",
-  "WikiPicture",
 ]);
 
 let totalIndex = 0;
@@ -68,12 +67,15 @@ export const posthtmlToReact = (tree, components = {}, level = 0) => {
       continue;
     }
 
-    // 自定义脚注样式
     if (node?.attrs?.class) {
       node.attrs.className = node.attrs.class;
       delete node.attrs.class;
     }
 
+    if (node?.attrs?.tabindex) {
+      node.attrs.tabIndex = node.attrs.tabindex;
+      delete node.attrs.tabindex;
+    }
     // if (node?.attrs?.id === "footnote-label") {
     //   node.content = ["参考资料"];
     // }

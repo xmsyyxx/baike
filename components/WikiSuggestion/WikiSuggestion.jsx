@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "classNames";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useMount } from "../../lib/hooks";

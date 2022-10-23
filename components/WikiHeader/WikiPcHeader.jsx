@@ -4,7 +4,7 @@ import WikiPcSearch from "../WikiSearch/WikiPcSearch";
 import classNames from "classNames";
 import styles from "./WikiPcHeader.module.scss";
 
-export default function WikiPcHeader() {
+export default function WikiPcHeader({ title }) {
 	return (
 		<div className={classNames("sm:hide", styles.header)}>
 			<div className={styles.nav}>

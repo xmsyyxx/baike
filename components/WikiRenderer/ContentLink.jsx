@@ -33,8 +33,8 @@ export default function ContentLink(props) {
   }
 
   return (
-    <Link href={href} passHref>
-      <a {...rest} />
-    </Link>
+    // <Link href={href} passHref>
+    <a href={href} {...rest} />
+    // </Link>
   );
 }

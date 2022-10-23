@@ -1,23 +1,16 @@
+import classNames from "classNames";
+import WikiRenderer from "../WikiRenderer/WikiRenderer";
 import styles from "./WikiBaseIntroductions.module.scss";
 
 export default function WikiBaseIntroductions(props) {
 	const { data, style } = props;
-	const introductions = data
-		? String(data)
-				.split("\n")
-				.filter((content) => {
-					return content && content.trim();
-				})
-		: [];
-
 	if (!data) return null;
 	return (
-		<div className={styles.introductions} style={style}>
-			{introductions.map((text) => (
-				<p className={styles.text} key={text}>
-					{text}
-				</p>
-			))}
+		<div
+			className={classNames("wiki-introductions", styles.introductions)}
+			style={style}
+		>
+			<WikiRenderer tree={data} />
 		</div>
 	);
 }

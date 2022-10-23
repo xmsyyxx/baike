@@ -1,19 +1,23 @@
-import classNames from "classnames";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import classNames from "classNames";
+import React, { useEffect, useState, useRef } from "react";
+import { useRouter } from "next/router";
 import { useMount } from "../../lib/hooks";
+import allPosts from "../../content/posts.json";
 import styles from "./WikiPcSearch.module.scss";
 
 let path = "/item/";
 
 export default function WikiPcSearch(props) {
-	const { allPosts, style } = props;
+	const { style, title } = props;
+	const router = useRouter();
 	const [placeholder, setPlaceholder] = useState("搜索词条");
 	const [isStartSearch, setIsStartSearch] = useState(false);
 	// const [isFetchContent, setIsFetchContent] = useState(false);
 	const [searchTips, setSearchTips] = useState("");
 	const [searchQuery, setSearchQuery] = useState("");
 	const [articles, setArticles] = useState([]);
+
+	const inputElRef = useRef(null);
 
 	const onSearchChange = (e) => {
 		const query = e.target.value;
@@ -28,9 +32,7 @@ export default function WikiPcSearch(props) {
 		query = query.toLocaleLowerCase();
 		let search = allPosts;
 		search = search.filter((content) => {
-			return (
-				String(content.title).toLocaleLowerCase().includes(query) && content
-			);
+			return String(content).toLocaleLowerCase().includes(query) && content;
 		});
 		setArticles(search);
 	};
@@ -39,7 +41,8 @@ export default function WikiPcSearch(props) {
 		path = window.outerWidth < 500 ? "/wiki/" : "/item/";
 	};
 
-	const onClickSearchInput = () => {
+	const onClickSearchInput = (e) => {
+		e.preventDefault();
 		setSearchTips("尝试搜索点什么……");
 		setIsStartSearch(true);
 		setPlaceholder("");
@@ -56,20 +59,28 @@ export default function WikiPcSearch(props) {
 		return () => window.removeEventListener("resize", onresize);
 	});
 
+	useEffect(() => {
+		setSearchTips("");
+		setSearchQuery("");
+		setIsStartSearch(false);
+		inputElRef.current.value = "";
+	}, [title]);
+
 	const SearchItem = ({ articles }) => {
 		return articles.map((article) => (
-			<Link key={article.title} href={path + article.title}>
-				<a>
-					<li
-						className={styles.link}
-						onClick={() => {
-							setIsStartSearch(false);
-						}}
-					>
-						<span className={styles.item}>{article.title}</span>
-					</li>
+			<li
+				className={styles.link}
+				onClick={() => {
+					setIsStartSearch(false);
+					inputElRef.current.value = "";
+					// router.push(path + article);
+				}}
+				key={article}
+			>
+				<a href={path + article}>
+					<span className={styles.item}>{article}</span>
 				</a>
-			</Link>
+			</li>
 		));
 	};
 
@@ -86,7 +97,8 @@ export default function WikiPcSearch(props) {
 					value={searchQuery}
 					onChange={onSearchChange}
 					onBlur={onBlurSearchInput}
-					onClick={onClickSearchInput}
+					// onClick={onClickSearchInput}
+					ref={inputElRef}
 				/>
 
 				{isStartSearch && articles.length ? (

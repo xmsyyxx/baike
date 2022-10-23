@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "classNames";
 import IconPrinter from "../icons/IconPrinter";
 import styles from "./WikiTitle.module.scss";
 
@@ -14,7 +14,7 @@ export default function WikiTitle(props) {
 
 	return (
 		<div className={styles.infomation}>
-			<div className={styles.left}>
+			<div>
 				<div className={styles.title}>{title}</div>
 				<div className={styles.description}>{description}</div>
 			</div>
