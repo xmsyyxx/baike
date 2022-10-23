@@ -1,5 +1,31 @@
 @import "../../styles/variables.scss";
 
+.item {
+	min-height: 100vh;
+	background-color: #f2f2f2;
+}
+
+@media only screen and (max-width: 500px) {
+	.item {
+		background-color: #eaecf0;
+	}
+}
+
+.box {
+	text-align: left;
+	padding-top: 60px;
+	background-color: $wiki-common-white;
+	word-break: break-word;
+	display: flex;
+	height: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+	.box {
+		padding-top: 44px;
+	}
+}
+
 .content {
 	display: flex;
 	flex-direction: column;
@@ -10,8 +36,69 @@
 	min-height: 70vh;
 }
 
+@media only screen and (max-width: 500px) {
+	.content {
+		max-width: 100%;
+		min-width: 0;
+		margin: 0;
+	}
+}
+
 .article {
 	display: flex;
 	flex-direction: column;
 	margin: 1rem 0;
+}
+
+.main {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+}
+
+@media only screen and (max-width: 500px) {
+	.main {
+		flex-direction: column-reverse;
+	}
+}
+
+.left {
+	width: $wiki-left-space;
+
+	.hr {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.left {
+		width: 100%;
+
+		.hr {
+			display: block;
+			width: 100%;
+			height: 0.5rem;
+			background-color: #f5f5f5;
+			border: 0;
+			margin: 0.7rem auto;
+			margin-top: 1rem;
+		}
+	}
+}
+
+.right {
+	width: $wiki-right-space;
+	transform: translateY(-2rem);
+}
+
+@media only screen and (max-width: 500px) {
+	.right {
+		width: 100%;
+		transform: none;
+	}
+}
+
+.sticky {
+	position: sticky;
+	top: calc(3rem + 60px);
 }

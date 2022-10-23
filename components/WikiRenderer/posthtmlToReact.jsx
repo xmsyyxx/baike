@@ -22,6 +22,7 @@ const SINGLE_TAGS = new Set([
   "source",
   "track",
   "wbr",
+  "WikiPicture",
 ]);
 
 let totalIndex = 0;
@@ -65,6 +66,24 @@ export const posthtmlToReact = (tree, components = {}, level = 0) => {
     if (!node.tag) {
       result.push(...posthtmlToReact(node.content, components, level + 1));
       continue;
+    }
+
+    // 自定义脚注样式
+    if (node?.attrs?.class) {
+      node.attrs.className = node.attrs.class;
+      delete node.attrs.class;
+    }
+
+    // if (node?.attrs?.id === "footnote-label") {
+    //   node.content = ["参考资料"];
+    // }
+
+    if (node?.attrs?.className === "footnotes") {
+      node.tag = "div";
+    }
+
+    if (node?.attrs?.className === "data-footnote-backref") {
+      node.content = [""];
     }
 
     const tag = typeof node.tag === "string" ? node.tag : "div";

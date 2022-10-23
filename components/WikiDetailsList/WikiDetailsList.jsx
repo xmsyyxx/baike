@@ -1,6 +1,6 @@
-import classNames from "classnames";
 import { useMount } from "../../lib/hooks";
 import React, { useState } from "react";
+import classNames from "classNames";
 import IconArrowUp from "../icons/IconArrowUp";
 import styles from "./WikiDetailsList.module.scss";
 
@@ -19,6 +19,7 @@ const DetailItem = ({ data, name }) => {
 
 export default function WikiDetailsList(props) {
 	const { data, style } = props;
+
 	const [isNeedShowMore, setIsNeedShowMore] = useState(true);
 	const [isShowMore, setIsShowMore] = useState(false);
 	const [renderMaxItem, setRenderMaxItem] = useState(5);

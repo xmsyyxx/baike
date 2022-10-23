@@ -10,16 +10,14 @@
 .box {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  position: relative;
 }
 
 .img {
   width: 100%;
-}
-
-.img > img {
-  max-width: 100%;
-  max-height: 300px;
-  width: auto;
 }
 
 .clickable {
@@ -39,10 +37,63 @@
 
 .tipsIcon {
   font-size: 1rem;
+  display: inline-block;
 }
 
 .tipsItem {
   font-size: 0.5rem;
+}
+
+.box img {
+  max-height: 300px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.placeholder {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+  width: initial;
+  height: initial;
+  cursor: zoom-in;
+
+  .loadingBox {
+    box-sizing: border-box;
+    display: block;
+    width: initial;
+    height: initial;
+    max-width: 100%;
+
+    img {
+      display: block;
+      background-image: none;
+      width: initial;
+      height: initial;
+      max-width: 100%;
+    }
+  }
+
+  .realImage {
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    margin: auto;
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+  }
 }
 
 // @media only screen and (min-width: 500px) {

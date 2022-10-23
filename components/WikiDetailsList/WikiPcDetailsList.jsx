@@ -1,3 +1,4 @@
+import { createElement, Fragment, useEffect, useState } from "react";
 import styles from "./WikiPcDetailsList.module.scss";
 
 const DetailItem = ({ data, name }) => {
@@ -14,12 +15,16 @@ const DetailItem = ({ data, name }) => {
 };
 
 export default function WikiPcDetailsList(props) {
-	const { data } = props;
+	const { title, tags } = props;
+	const data = props.data || {
+		中文名: title,
+		标签: String(tags).replace(/,/g, "，"),
+	};
 	const infoKeys = Object.keys(data);
 
 	if (!infoKeys) return null;
 	return (
-		<div v-if="data" className={styles.details}>
+		<div className={styles.details}>
 			<div className={styles.tips}>基本信息</div>
 			<div className={styles.list}>
 				<ul>

@@ -42,6 +42,7 @@ body {
   text-transform: none;
   vertical-align: -0.125em;
   text-rendering: optimizeLegibility;
+  margin: 0 0.1em;
 }
 
 p {
@@ -68,16 +69,16 @@ p a,
 }
 
 .wiki-introductions,
-.nuxt-content p,
-.nuxt-content ul,
-.nuxt-content ol {
+.wiki-contents p,
+.wiki-contents ul,
+.wiki-contents ol {
   a {
     margin-left: 0.1em;
     margin-right: 0.1em;
   }
 }
 
-.nuxt-content {
+.wiki-contents {
   p,
   ul,
   ol {
@@ -106,11 +107,14 @@ p a,
     line-height: 1.3;
     word-wrap: break-word;
     word-break: break-word;
+    scroll-margin-top: 100px;
   }
 
-  h2 a::before {
+  h2::before {
     content: "# ";
     font-weight: 700;
+    color: #1473e6;
+    cursor: pointer;
   }
 
   h2 {
@@ -129,7 +133,7 @@ p a,
   }
 }
 
-.footnote-ref {
+[data-footnote-ref] {
   font-weight: 400;
 
   &::before {
@@ -142,15 +146,10 @@ p a,
 }
 
 .footnotes {
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 0;
 
   hr {
     display: none;
-  }
-
-  ol {
-    padding-left: 1rem;
   }
 
   ol li::marker {
@@ -167,6 +166,20 @@ p a,
       padding-right: 13px;
       background-image: url("data:image/svg+xml;charset=utf-8, <svg viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' width='16' height='16'><path d='M924.402464 1023.068211H0.679665V99.345412h461.861399v98.909208H99.596867v725.896389h725.896389V561.206811h98.909208z' fill='%231473e6'></path><path d='M930.805104 22.977336l69.965436 69.965436-453.492405 453.492404-69.965435-69.901489z' fill='%231473e6'></path><path d='M1022.464381 304.030081h-98.917201V99.345412H709.230573V0.428211h313.233808z' fill='%231473e6'></path></svg>");
     }
+
+    [data-footnote-backref] {
+      display: none;
+    }
+  }
+
+  #footnote-label {
+    display: none;
+  }
+
+  p {
+    margin: 0;
+    text-indent: 0;
+    font-size: 0.9rem;
   }
 }
 
@@ -179,7 +192,7 @@ p a,
 }
 
 @media only screen and (min-width: 500px) {
-  .nuxt-content {
+  .wiki-contents {
     width: 100%;
   }
 
@@ -187,7 +200,7 @@ p a,
     width: 30%;
   }
 
-  .nuxt-content {
+  .wiki-contents {
     h2 {
       border-bottom: 2px solid $wiki-border-gray;
       padding-bottom: 1rem;
@@ -210,7 +223,7 @@ p a,
 }
 
 @media only screen and (max-width: 500px) {
-  .nuxt-content {
+  .wiki-contents {
     h2 {
       border-bottom: 1px solid #eaecf0;
       padding-bottom: 0.5rem;
@@ -280,5 +293,29 @@ p a,
       margin-left: 1rem;
       margin-right: 1rem;
     }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .sm\:show,
+  .lg\:hide {
+    display: block !important;
+  }
+
+  .sm\:hide,
+  .lg\:show {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .sm\:show,
+  .lg\:hide {
+    display: none !important;
+  }
+
+  .sm\:hide,
+  .lg\:show {
+    display: block !important;
   }
 }
