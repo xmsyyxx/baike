@@ -1,0 +1,29 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+@media only screen and (min-width: 500px) {
+  .input {
+    @include wiki-input-icon($wiki-search-mirror-gray);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .input {
+    @include wiki-input-icon(#fff);
+    @apply input-bordered;
+  }
+}
+
+.suggest li {
+  &:first-child {
+    @apply bg-slate-700 rounded-t-lg;
+
+    span {
+      @apply text-white;
+    }
+  }
+
+  &:last-child {
+    @apply rounded-b-lg;
+  }
+}

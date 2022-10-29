@@ -1,8 +1,10 @@
+import classNames from "classNames";
 import React, { useEffect, useState, useRef } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { isSupportWebp } from "../../lib/init";
-import { useImageFullyLoaded } from "../../lib/hooks";
+import { useImageFullyLoaded } from "../../lib/hooks/useImageFullyLoaded";
 import IconUp from "../icons/IconUp";
+import { Image } from "./Image";
 import styles from "./WikiPicture.module.scss";
 
 /**
@@ -11,7 +13,7 @@ import styles from "./WikiPicture.module.scss";
 export default function WikiPicture(props) {
   const { alt, clickable = true, normalSuffix = "/normal" } = props;
   const webpSuffix = normalSuffix + ".webp";
-  const _src = String(props.src).split("_");
+  const _src = String(props.src).split("?");
   const src = _src?.[0] ? _src[0] : _src;
   const imageSize = _src?.[1] ? _src[1] : "x";
   const [imageURL, setImageURL] = useState(src + webpSuffix);
@@ -21,19 +23,21 @@ export default function WikiPicture(props) {
 
   const imageElRef = useRef(null);
 
-  const isGif = () => {
-    return src && String(src).endsWith(".gif");
+  const isNeedShowNormalImage = () => {
+    return (
+      src && (String(src).endsWith(".gif") || String(src).endsWith(".svg"))
+    );
   };
 
   useEffect(() => {
     const _suffix = normalSuffix + (isSupportWebp() ? ".webp" : ".jpg");
-    setImageURL(src + (isGif() ? "" : _suffix));
+    setImageURL(src + (isNeedShowNormalImage() ? "" : _suffix));
   }, [src]);
 
   const isImageFullyLoaded = useImageFullyLoaded(imageElRef, imageURL);
 
   return (
-    <div className={styles.picture}>
+    <div className={classNames("wiki-picture", styles.picture)}>
       <div className={styles.box}>
         <PhotoProvider maskOpacity={0.8}>
           <div className={styles.placeholder}>
@@ -50,8 +54,13 @@ export default function WikiPicture(props) {
                 src={`data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27${imageWidth}%27%20height=%27${imageHeight}%27/%3e`}
               />
             </div>
-            <PhotoView src={imageURL} key={imageURL}>
-              <img
+            <PhotoView
+              src={imageURL}
+              key={imageURL}
+              width={imageWidth}
+              height={imageHeight}
+            >
+              <Image
                 className={styles.realImage}
                 width={imageWidth}
                 height={imageHeight}

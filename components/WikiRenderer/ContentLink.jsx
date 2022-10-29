@@ -1,5 +1,4 @@
 /**
- * 控制 a 标签的渲染方式
  * @author Sukka
  * @see https://blog.skk.moe/post/use-nextjs-and-hexo-to-rebuild-my-blog
  */

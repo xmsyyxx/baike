@@ -1,0 +1,10 @@
+.wiki-contents .wiki-step {
+	.item {
+		display: flex;
+		justify-content: space-between;
+
+		.wiki-picture:last-child {
+			min-width: 30%;
+		}
+	}
+}

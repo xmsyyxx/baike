@@ -1,5 +1,4 @@
 /**
- * 将 PostHTML AST 渲染为 React Node
  * @author Sukka
  * @see https://blog.skk.moe/post/use-nextjs-and-hexo-to-rebuild-my-blog
  */

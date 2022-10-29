@@ -125,17 +125,22 @@ p a,
 
   h3 {
     margin-bottom: 0;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
   }
 
   img {
     width: 100%;
   }
+
+  .wiki-picture {
+    padding: 1rem;
+  }
 }
 
 .wiki-introductions p {
-  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 [data-footnote-ref] {
@@ -333,3 +338,5 @@ iframe.wiki-video {
   min-height: 100vh;
   min-width: auto;
 }
+
+@import "./wiki-step.scss";
