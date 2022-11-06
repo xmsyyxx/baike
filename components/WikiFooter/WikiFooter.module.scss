@@ -18,8 +18,6 @@
   color: $wiki-content-black;
   padding: 20px 0;
   width: 100%;
-  max-width: $wiki-max-width;
-  min-width: $wiki-min-width;
   margin: auto;
   font-size: 0.75rem;
 
@@ -90,6 +88,14 @@
     .fill,
     .tips {
       display: none;
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .home {
+    &.footer {
+      position: absolute !important;
     }
   }
 }

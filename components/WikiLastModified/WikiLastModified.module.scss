@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .modified {
   display: block;
   // border-bottom: solid 1px #c8ccd1;
@@ -5,6 +7,7 @@
   // background-color: #eaecf0;
   padding: 0.25rem 0.75rem;
   font-size: 0.85rem;
+  background-color: #fff;
 }
 
 .box {
@@ -13,6 +16,17 @@
   flex-direction: row;
   justify-content: space-between;
   font-size: 0.9rem;
+  max-width: $wiki-max-width;
+  min-width: $wiki-min-width;
+  height: 100%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 500px) {
+  .box {
+    max-width: 100%;
+    min-width: 0;
+  }
 }
 
 .maim {

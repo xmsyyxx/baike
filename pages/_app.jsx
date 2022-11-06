@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { Provider as StyletronProvider, DebugEngine } from "styletron-react";
 import { styletron } from "../styletron";
 import Common from "../components/Common";
+import WikiPopups from "../components/WikiPopups/WikiPopups";
 
 import "normalize.css";
 import "../styles/global.scss";
@@ -39,6 +40,7 @@ export default function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
         <Common />
       </StyletronProvider>
+      <WikiPopups />
     </>
   );
 }

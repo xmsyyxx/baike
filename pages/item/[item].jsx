@@ -1,6 +1,8 @@
-import classNames from "classNames";
+import classNames from "classnames";
+import Head from "next/head";
 import React, { Fragment, useEffect, useState } from "react";
 import { getStaticProps, getStaticPaths } from "../../lib/getStaticData";
+import Meta from "../../components/meta";
 import WikiRenderer from "../../components/WikiRenderer/WikiRenderer";
 import Header from "../../components/WikiHeader/Header";
 import WikiTitle from "../../components/WikiTitle/WikiTitle";
@@ -9,14 +11,13 @@ import WikiBaseIntroductions from "../../components/WikiBaseIntroductions/WikiBa
 import WikiPicture from "../../components/WikiPicture/WikiPicture";
 import WikiPcDetailsList from "../../components/WikiDetailsList/WikiPcDetailsList";
 import WikiDetailsList from "../../components/WikiDetailsList/WikiDetailsList";
-// import WikiStatus from "../../components/WikiStatus/WikiStatus";
+import WikiLastModified from "../../components/WikiLastModified/WikiLastModified";
 import WikiPcStatus from "../../components/WikiStatus/WikiPcStatus";
 import WikiFooter from "../../components/WikiFooter/WikiFooter";
 import SearchModal from "../../components/WikiSearch/SearchModal";
 import styles from "./item.module.scss";
 
 export { getStaticProps, getStaticPaths };
-
 export default function WikiItem(props) {
   const [DetailsContent, setDetailsContent] = useState(Fragment);
   const [SearchModalContent, setSearchModalContent] = useState(Fragment);
@@ -54,11 +55,23 @@ export default function WikiItem(props) {
       </div>
     );
 
-    setSearchModalContent(SearchModal);
+    setSearchModalContent(<SearchModal />);
   }, [title]);
 
   return (
     <>
+      <Meta />
+      <Head>
+        <title>{`${title} - 耳斯百科`}</title>
+        <link rel="canonical" href={`https://www.erssbk.com/item/${title}`} />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={`${title},耳斯百科`} />
+        <meta name="og:type" content="article" />
+        <meta name="og:title" content={`${title} - 耳斯百科`} />
+        <meta name="og:site_name" content="耳斯百科" />
+        <meta name="og:url" content={`https://www.erssbk.com/item/${title}`} />
+        <meta name="og:description" content={description} />
+      </Head>
       <div className={styles.item}>
         <Header title={title} />
         <div className={styles.box}>
@@ -66,6 +79,7 @@ export default function WikiItem(props) {
             <WikiTitle title={title} description={description} />
             {tags && <WikiTags tags={tags} />}
             <div className={styles.main}>
+              {/* 左侧内容 */}
               <div className={styles.left}>
                 {introduction && <WikiBaseIntroductions data={introduction} />}
                 {info && (
@@ -78,6 +92,9 @@ export default function WikiItem(props) {
                   <WikiRenderer tree={tree} />
                 </div>
               </div>
+              {/* 左侧内容结束 */}
+
+              {/* 右侧内容 */}
               <div className={styles.right}>
                 {wikiImgObj.url && (
                   <WikiPicture
@@ -89,12 +106,14 @@ export default function WikiItem(props) {
                 )}
                 {DetailsContent}
               </div>
+              {/* 右侧内容结束 */}
             </div>
           </div>
         </div>
+        <WikiLastModified lastModified={updatedAt} />
         <WikiFooter />
       </div>
-      {SearchModalContent}
+      <div className="sm:show">{SearchModalContent}</div>
     </>
   );
 }

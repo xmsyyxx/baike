@@ -1,4 +1,4 @@
-import classNames from "classNames";
+import classNames from "classnames";
 import React, { useEffect, useState, useRef } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { isSupportWebp } from "../../lib/init";
@@ -23,10 +23,11 @@ export default function WikiPicture(props) {
 
   const imageElRef = useRef(null);
 
+  const isSvg = () => String(src).endsWith(".svg");
+  const isGif = () => String(src).endsWith(".gif");
+
   const isNeedShowNormalImage = () => {
-    return (
-      src && (String(src).endsWith(".gif") || String(src).endsWith(".svg"))
-    );
+    return src && (isSvg() || isGif());
   };
 
   useEffect(() => {
@@ -35,6 +36,23 @@ export default function WikiPicture(props) {
   }, [src]);
 
   const isImageFullyLoaded = useImageFullyLoaded(imageElRef, imageURL);
+
+  const ImageElement = React.forwardRef((props, ref) => {
+    return (
+      <Image
+        className={styles.realImage}
+        width={imageWidth}
+        height={imageHeight}
+        ref={ref}
+        decoding="async"
+        crossOrigin="anonymous"
+        src={imageURL}
+        alt={alt}
+        title={alt}
+        {...props}
+      />
+    );
+  });
 
   return (
     <div className={classNames("wiki-picture", styles.picture)}>
@@ -54,24 +72,26 @@ export default function WikiPicture(props) {
                 src={`data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27${imageWidth}%27%20height=%27${imageHeight}%27/%3e`}
               />
             </div>
-            <PhotoView
-              src={imageURL}
-              key={imageURL}
-              width={imageWidth}
-              height={imageHeight}
-            >
-              <Image
-                className={styles.realImage}
+            {isNeedShowNormalImage() ? (
+              // <a href={imageURL} target="_blank">
+              //   {ImageElement}
+              // </a>
+              <ImageElement
+                ref={imageElRef}
+                onClick={() => {
+                  return window.open(imageURL, "_blank");
+                }}
+              />
+            ) : (
+              <PhotoView
+                src={imageURL}
+                key={imageURL}
                 width={imageWidth}
                 height={imageHeight}
-                ref={imageElRef}
-                decoding="async"
-                crossOrigin="anonymous"
-                src={imageURL}
-                alt={alt}
-                title={alt}
-              />
-            </PhotoView>
+              >
+                <ImageElement ref={imageElRef} />
+              </PhotoView>
+            )}
           </div>
         </PhotoProvider>
       </div>

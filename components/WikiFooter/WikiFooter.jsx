@@ -1,10 +1,10 @@
-import classNames from "classNames";
+import classNames from "classnames";
 import { useEffect, useState } from "react";
 import WikiLogo from "../WikiLogo/WikiLogo";
 import styles from "./WikiFooter.module.scss";
 
 export default function WikiFooter(props) {
-  const { isHome } = props;
+  const { ishome, position } = props;
   const version = require("../../package.json").version;
   const copyright = `Copyright © 2021-${new Date().getFullYear()} IYAMAYA 耳斯工作室`;
   const [isMounted, setIsMounted] = useState(false);
@@ -34,10 +34,13 @@ export default function WikiFooter(props) {
   return (
     <div
       className={classNames(styles.footer, {
-        [styles.home]: isHome,
+        [styles.home]: ishome,
         [styles.scroll]: isScroll,
         WikiFooter_mounted: isMounted,
       })}
+      style={{
+        position: position || null,
+      }}
     >
       <div className={styles.box}>
         <div className={styles.copyright}>
@@ -80,7 +83,7 @@ export default function WikiFooter(props) {
         <div className={classNames(styles.fill, styles.homehide)}></div>
         <div className={classNames(styles.tips, styles.homehide)}>
           <span className={styles.logo}>
-            <WikiLogo isHome={isHome} isFooter={true} />
+            <WikiLogo ishome={ishome} isFooter={true} />
           </span>
         </div>
       </div>

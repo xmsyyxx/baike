@@ -1,12 +1,10 @@
-import classNames from "classNames";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import classNames from "classnames";
 import { useState } from "react";
-import allPosts from "../../content/posts.json";
+import allPosts from "../../../content/posts.json";
 import styles from "./SearchBar.module.scss";
 
 export default function SearchBar(props) {
-  const router = useRouter();
+  const { ishome, ...rest } = props;
   const [searchResults, setSearchResults] = useState([]);
   const [isStartSearch, setIsStartSearch] = useState(false);
 
@@ -33,10 +31,10 @@ export default function SearchBar(props) {
     if (searchResults.length === 0 && isStartSearch) {
       return (
         <div
-          className={
-            className +
-            " no-result cursor-default text-center py-4 text-base-500"
-          }
+          className={classNames(
+            className,
+            "no-result cursor-default text-center py-4 text-base-500"
+          )}
         >
           无结果
         </div>
@@ -46,7 +44,7 @@ export default function SearchBar(props) {
       return (
         <li
           key={item}
-          className={className}
+          className={classNames(className, "leading-6")}
           onClick={() => {
             location.href = `/item/${item}`;
           }}
@@ -61,31 +59,55 @@ export default function SearchBar(props) {
 
   return (
     <>
-      <div className="max-w-sm flex w-2/6" {...props}>
+      <div
+        className={classNames("Search flex", {
+          "max-w-sm w-2/6": !ishome,
+          "max-w-full w-full mx-auto": ishome,
+        })}
+        {...rest}
+      >
         <div className="relative w-full">
-          <div className="SearchBar max-w-md w-full bg-transparent p-1">
+          <div
+            className={classNames("SearchBar max-w-full bg-transparent p-1", {
+              "mx-auto": ishome,
+            })}
+          >
             <input
               type="text"
               className={classNames(
-                "input w-full max-w-md h-9 text-sm " +
+                "input w-full h-9 text-sm " +
                   "hover:bg-white hover:input-bordered focus:input-bordered " +
                   "focus:bg-white transition-colors duration-300",
-                styles.input
+                styles.input,
+                {
+                  "max-w-md": !ishome,
+                  "h-12 max-w-full w-full lg:w-[710px]": ishome,
+                }
               )}
               placeholder="搜索词条"
               onChange={onSearchChange}
             />
             {(searchResults.length > 0 || isStartSearch) && (
-              <ul
-                className={classNames(
-                  styles.suggest,
-                  "w-full max-w-md scroll-auto bg-white rounded-lg shadow-lg " +
-                    "list-none p-0 m-0 border border-solid border-neutral-200 absolute " +
-                    "top-full left-0 right-0"
-                )}
+              <div
+                className={classNames("relative", {
+                  "translate-y-2": ishome,
+                })}
               >
-                <ResultItem />
-              </ul>
+                <ul
+                  className={classNames(
+                    styles.suggest,
+                    "scroll-auto bg-white rounded-lg shadow-lg " +
+                      "list-none p-0 border border-solid border-neutral-200 absolute " +
+                      "top-full left-0 right-0 text-left",
+                    {
+                      "w-full max-w-md m-0": !ishome,
+                      "w-full lg:w-[710px] mx-auto": ishome,
+                    }
+                  )}
+                >
+                  <ResultItem />
+                </ul>
+              </div>
             )}
           </div>
         </div>

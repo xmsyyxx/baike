@@ -4,6 +4,7 @@
  */
 
 import Link from "next/link";
+import EventBus from "../../lib/eventBus";
 
 const isExternalLink = (href) => {
   if (!href) {
@@ -33,7 +34,16 @@ export default function ContentLink(props) {
 
   return (
     // <Link href={href} passHref>
-    <a href={href} {...rest} />
+    <a
+      href={href}
+      // onMouseEnter={(event) => {
+      //   EventBus.emit("showWikiPopup", event);
+      // }}
+      // onMouseLeave={() => {
+      //   EventBus.emit("hideWikiPopup");
+      // }}
+      {...rest}
+    />
     // </Link>
   );
 }
