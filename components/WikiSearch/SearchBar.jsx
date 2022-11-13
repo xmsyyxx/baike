@@ -33,10 +33,10 @@ export default function SearchBar(props) {
         <div
           className={classNames(
             className,
-            "no-result cursor-default text-center py-4 text-base-500"
+            "no-result cursor-default text-center py-4 text-base-500 hover:bg-white w-max-full"
           )}
         >
-          无结果
+          暂无相关条目，点我<a href="/item/耳斯百科：投稿">前往投稿页面</a>
         </div>
       );
     }

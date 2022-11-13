@@ -15,12 +15,14 @@ import WikiLastModified from "../../components/WikiLastModified/WikiLastModified
 import WikiPcStatus from "../../components/WikiStatus/WikiPcStatus";
 import WikiFooter from "../../components/WikiFooter/WikiFooter";
 import SearchModal from "../../components/WikiSearch/SearchModal";
+
+import Alert from "../../components/Alert";
+
 import styles from "./item.module.scss";
 
 export { getStaticProps, getStaticPaths };
 export default function WikiItem(props) {
   const [DetailsContent, setDetailsContent] = useState(Fragment);
-  const [SearchModalContent, setSearchModalContent] = useState(Fragment);
 
   const {
     tree,
@@ -30,6 +32,7 @@ export default function WikiItem(props) {
     introduction,
     img,
     info,
+    noticeList,
     createdAt,
     updatedAt,
   } = props;
@@ -54,8 +57,6 @@ export default function WikiItem(props) {
         )}
       </div>
     );
-
-    setSearchModalContent(<SearchModal />);
   }, [title]);
 
   return (
@@ -89,6 +90,15 @@ export default function WikiItem(props) {
                 )}
                 <hr className={classNames("sm:show", styles.hr)} />
                 <div className={classNames("wiki-contents", styles.article)}>
+                  {Array.isArray(noticeList) &&
+                    noticeList.length > 0 &&
+                    noticeList.map((tree) => (
+                      <div className="no-style mb-4 -mt-4 lg:mt-4" key={tree}>
+                        <Alert>
+                          <WikiRenderer tree={tree} />
+                        </Alert>
+                      </div>
+                    ))}
                   <WikiRenderer tree={tree} />
                 </div>
               </div>
@@ -113,7 +123,7 @@ export default function WikiItem(props) {
         <WikiLastModified lastModified={updatedAt} />
         <WikiFooter />
       </div>
-      <div className="sm:show">{SearchModalContent}</div>
+      <SearchModal />
     </>
   );
 }

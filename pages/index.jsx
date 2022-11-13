@@ -3,9 +3,8 @@ import Head from "next/head";
 import WikiFooter from "../components/WikiFooter/WikiFooter";
 import SearchBar from "../components/WikiSearch/SearchBar";
 import WikiSuggestion from "../components/WikiSuggestion/WikiSuggestion";
-import WikiPreviewCard from "../components/WikiPreviewCard/WikiPreviewCard";
-
-const highlightWikis = ["解恪布", "开圆盛世", "厦门市音乐学校", "耳斯名言"];
+import WikiPreview from "../components/WikiPreview/WikiPreview";
+const highlightWikis = ["解恪布", "厦门市音乐学校", "开圆盛世", "耳斯名言"];
 
 export default function Index() {
   return (
@@ -34,15 +33,15 @@ export default function Index() {
               <WikiSuggestion />
             </div>
           </div>
-          <div className="p-4 mt-2 text-left sm:show">
+          <div className="p-4 mt-2 mb-4 text-left sm:show">
             <h3 className="mx-2 mt-2 font-semibold text-gray-700 text-base">
               随便看看：
             </h3>
             <div className="PreviewCards">
               {highlightWikis.map((item) => {
                 return (
-                  <div className="mt-4">
-                    <WikiPreviewCard item={item} />
+                  <div className="mt-4" key={item}>
+                    <WikiPreview item={item} />
                   </div>
                 );
               })}
@@ -50,7 +49,7 @@ export default function Index() {
             {/* <WikiPreviewCard /> */}
             <style global jsx>{`
               .PreviewCards .MuiSkeleton-rounded {
-                border-radius: 20px;
+                border-radius: 20px !important;
               }
             `}</style>
           </div>

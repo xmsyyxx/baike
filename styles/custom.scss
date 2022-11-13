@@ -80,6 +80,12 @@ p a,
     color: $wiki-content-black;
   }
 
+  ul,
+  ol {
+    padding-inline-start: 40px !important;
+    padding-left: 40px !important;
+  }
+
   p {
     margin: 0.5rem 1rem;
     margin-bottom: 1rem;
@@ -91,6 +97,10 @@ p a,
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  a {
+    color: $wiki-link-blue;
   }
 
   ul,
@@ -339,4 +349,16 @@ iframe.wiki-video {
   min-width: auto;
 }
 
-@import "./wiki-step.scss";
+.no-style {
+  p {
+    margin: inherit !important;
+    text-indent: inherit !important;
+    font: inherit !important;
+    color: inherit !important;
+
+    a:hover {
+      background: inherit !important;
+      border-radius: none !important;
+    }
+  }
+}

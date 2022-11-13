@@ -3,8 +3,8 @@
  * @see https://blog.skk.moe/post/use-nextjs-and-hexo-to-rebuild-my-blog
  */
 
-import Link from "next/link";
-import EventBus from "../../lib/eventBus";
+import { useState } from "react";
+import LinkWithHoverCard from "./link/LinkWithHoverCard";
 
 const isExternalLink = (href) => {
   if (!href) {
@@ -25,6 +25,10 @@ const isExternalLink = (href) => {
   return false;
 };
 
+const isHashLink = (href) => {
+  return href && href.startsWith("#");
+};
+
 export default function ContentLink(props) {
   const { href, ...rest } = props;
 
@@ -32,18 +36,13 @@ export default function ContentLink(props) {
     return <a {...props} target="_blank" rel="noopener noreferrer nofollow" />;
   }
 
+  if (isHashLink(href)) {
+    return <a {...props} />;
+  }
+
   return (
-    // <Link href={href} passHref>
-    <a
-      href={href}
-      // onMouseEnter={(event) => {
-      //   EventBus.emit("showWikiPopup", event);
-      // }}
-      // onMouseLeave={() => {
-      //   EventBus.emit("hideWikiPopup");
-      // }}
-      {...rest}
-    />
-    // </Link>
+    <LinkWithHoverCard item={href}>
+      <a href={href} {...rest} />
+    </LinkWithHoverCard>
   );
 }

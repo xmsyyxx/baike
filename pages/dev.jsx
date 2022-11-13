@@ -1,9 +1,14 @@
-import WikiSearch from "../components/WikiSearch/WikiSearch";
+import {
+  TextSkeleton,
+  TextContents,
+} from "../components/WikiPreview/PreviewWithText";
 
 export default function Dev() {
   return (
     <>
-      <WikiSearch />
+      <div className="relative">
+        <TextSkeleton />
+      </div>
     </>
   );
 }
