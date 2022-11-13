@@ -41,7 +41,7 @@ export default function LinkWithHoverCard(props) {
   const { children, item } = props;
   const [device] = useDevice();
   const isMobile = device === "mobile";
-  if (isMobile) return <LinkWithModal item={item}>{children} </LinkWithModal>;
+  if (isMobile) return <LinkWithModal item={item}>{children}</LinkWithModal>;
 
   return (
     <HoverCard.Root openDelay={350}>

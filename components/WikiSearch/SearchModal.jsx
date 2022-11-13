@@ -15,7 +15,7 @@ export default function SearchModal(props) {
         <div className="modal-box rounded-t-2xl w-full h-[85vh]">
           <label
             htmlFor="search"
-            className="btn btn-ghost absolute right-0 top-0"
+            className="btn btn-ghost absolute right-0 top-0 z-[1000]"
           >
             <IconClose />
           </label>
