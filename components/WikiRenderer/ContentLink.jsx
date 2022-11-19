@@ -1,10 +1,6 @@
-import LinkWithHoverCard from "./link/LinkWithHoverCard";
+import Link from "./link/Link";
 
 export default function ContentLink(props) {
   const { href, ...rest } = props;
-  return (
-    <LinkWithHoverCard item={href}>
-      <a href={href} {...rest} />
-    </LinkWithHoverCard>
-  );
+  return <Link href={href} {...rest} />;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import LinkWithHoverCard from "./LinkWithHoverCard";
 
 const isExternalLink = (href) => {
   if (!href) {
@@ -24,12 +25,12 @@ const isHashLink = (href) => {
 };
 
 export default React.forwardRef((props, ref) => {
-  const { href, _onclick, ...rest } = props;
+  const { href, ...rest } = props;
 
   if (isExternalLink(href)) {
     return (
       <a
-        {...props}
+        {...rest}
         ref={ref}
         target="_blank"
         rel="noopener noreferrer nofollow"
@@ -42,13 +43,8 @@ export default React.forwardRef((props, ref) => {
   }
 
   return (
-    <a
-      href={href}
-      onClick={(e) => {
-        typeof _onclick === "function" && _onclick(e);
-      }}
-      ref={ref}
-      {...rest}
-    />
+    <LinkWithHoverCard item={href}>
+      <a href={href} ref={ref} {...rest} />
+    </LinkWithHoverCard>
   );
 });

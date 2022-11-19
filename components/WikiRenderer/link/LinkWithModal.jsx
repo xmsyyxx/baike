@@ -14,8 +14,7 @@ const CardModal = (props) => {
     <>
       <a
         {...children.props}
-        onClick={(e) => {
-          e.preventDefault();
+        onClick={() => {
           const modal = new ModalController(
             (
               <>

@@ -5,7 +5,12 @@ export const TextContents = (props) => {
   const { item, image, text } = props;
 
   return (
-    <div className="relative overflow-hidden w-full">
+    <div
+      className="relative overflow-hidden w-full cursor-pointer"
+      onClick={() => {
+        location.href = `/item/${encodeURIComponent(item)}`;
+      }}
+    >
       <div className="m-4 leading-normal text-sm font-normal">
         {image && (
           <AspectRatioPrimitive.Root ratio={16 / 9} className="mb-2">

@@ -29,10 +29,10 @@ const fadeOutDown = keyframes`
 
 const HoverCardContent = styled(HoverCard.Content)`
   &[data-state="open"] {
-    animation: ${fadeInUp} 0.3s ease-in-out;
+    animation: ${fadeInUp} 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   &[data-state="closed"] {
-    animation: ${fadeOutDown} 0.25s ease-in-out;
+    animation: ${fadeOutDown} 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 `;
 
@@ -43,15 +43,17 @@ export default function LinkWithHoverCard(props) {
   return (
     <HoverCard.Root openDelay={350}>
       <HoverCard.Trigger asChild>
-        <Link {...children.props} data-link />
+        <a {...children.props} data-link />
       </HoverCard.Trigger>
       <HoverCard.Portal>
         <HoverCardContent
-          className="HoverCardContent inline-white bg-white leading-5 w-80 z-50 
-        rounded-lg shadow-xl border-[1px] border-gray-100 border-solid"
+          className="HoverCardContent inline-white bg-white leading-5 
+          w-80 z-50 rounded-lg shadow-lg hover:shadow-xl border-[1px] 
+          border-gray-100 border-solid transition-shadow"
+          collisionPadding={10}
         >
           <WikiPreview type="text" item={decodeURIComponent(item)} />
-          {/* <HoverCard.Arrow className="HoverCardArrow fill-gray-100" /> */}
+          <HoverCard.Arrow className="HoverCardArrow invisible" />
         </HoverCardContent>
       </HoverCard.Portal>
     </HoverCard.Root>
