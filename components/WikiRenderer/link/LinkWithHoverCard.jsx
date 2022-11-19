@@ -1,9 +1,8 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import * as HoverCard from "@radix-ui/react-hover-card";
-import useDevice from "../../../lib/hooks/useDevice";
 import WikiPreview from "../../WikiPreview/WikiPreview";
-import LinkWithModal from "./LinkWithModal";
+import Link from "./Link";
 
 const fadeInUp = keyframes`
   from {
@@ -39,20 +38,20 @@ const HoverCardContent = styled(HoverCard.Content)`
 
 export default function LinkWithHoverCard(props) {
   const { children, item } = props;
-  const [device] = useDevice();
-  const isMobile = device === "mobile";
-  if (isMobile) return <LinkWithModal item={item}>{children}</LinkWithModal>;
+  // if (isMobile) return <LinkWithModal item={item}>{children}</LinkWithModal>;
 
   return (
     <HoverCard.Root openDelay={350}>
-      <HoverCard.Trigger asChild>{children}</HoverCard.Trigger>
+      <HoverCard.Trigger asChild>
+        <Link {...children.props} data-link />
+      </HoverCard.Trigger>
       <HoverCard.Portal>
         <HoverCardContent
           className="HoverCardContent inline-white bg-white leading-5 w-80 z-50 
         rounded-lg shadow-xl border-[1px] border-gray-100 border-solid"
         >
           <WikiPreview type="text" item={decodeURIComponent(item)} />
-          <HoverCard.Arrow className="HoverCardArrow fill-gray-100" />
+          {/* <HoverCard.Arrow className="HoverCardArrow fill-gray-100" /> */}
         </HoverCardContent>
       </HoverCard.Portal>
     </HoverCard.Root>

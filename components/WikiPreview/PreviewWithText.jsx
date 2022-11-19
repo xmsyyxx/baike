@@ -22,6 +22,11 @@ export const TextContents = (props) => {
         <p className="block min-h-16 max-h-32 overflow-hidden indent-0 m-0">
           <strong className="font-bold">{item}</strong>：{text}
         </p>
+        <div className="flex justify-end mt-2">
+          <a className="text-md" href={"/item/" + item}>
+            了解更多
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -30,9 +35,10 @@ export const TextContents = (props) => {
 export const TextSkeleton = () => {
   return (
     <div className="relative m-4">
-      <AspectRatioPrimitive.Root ratio={16 / 9} className="mb-2">
+      {/* <AspectRatioPrimitive.Root ratio={16 / 9} className="mb-2">
         <Skeleton variant="rounded" width="100%" height="100%" />
-      </AspectRatioPrimitive.Root>
+      </AspectRatioPrimitive.Root> */}
+      <Skeleton variant="text" sx={{ fontSize: "0.875rem" }} />
       <Skeleton variant="text" sx={{ fontSize: "0.875rem" }} />
       <Skeleton variant="text" sx={{ fontSize: "0.875rem" }} />
       <Skeleton variant="text" sx={{ fontSize: "0.875rem" }} width="60%" />

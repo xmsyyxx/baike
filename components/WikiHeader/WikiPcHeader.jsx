@@ -1,10 +1,9 @@
 import Link from "next/link";
-import IconHome from "../icons/IconHome";
 import WikiPcSearch from "../WikiSearch/WikiPcSearch";
 import classNames from "classnames";
 import styles from "./WikiPcHeader.module.scss";
 
-export default function WikiPcHeader({ title }) {
+export default function WikiPcHeader() {
   return (
     <div className={classNames("sm:hide", styles.header)}>
       <div className={styles.nav}>
