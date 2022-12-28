@@ -7,7 +7,7 @@
   background-color: $wiki-footer-gray;
   font-weight: 400;
   z-index: 10;
-  padding: 0 50px;
+  padding: 0 1rem;
   font-size: 0.8rem;
 }
 
@@ -20,6 +20,8 @@
   width: 100%;
   margin: auto;
   font-size: 0.75rem;
+  max-width: $wiki-max-width;
+  min-width: $wiki-min-width;
 
   span {
     line-height: 1.5;
