@@ -30,7 +30,7 @@ export default React.forwardRef((props, ref) => {
   if (isExternalLink(href)) {
     return (
       <a
-        {...rest}
+        {...props}
         ref={ref}
         target="_blank"
         rel="noopener noreferrer nofollow"
@@ -39,12 +39,12 @@ export default React.forwardRef((props, ref) => {
   }
 
   if (isHashLink(href)) {
-    return <a href={href} ref={ref} {...rest} />;
+    return <a href={href} ref={ref} {...props} />;
   }
 
   return (
     <LinkWithHoverCard item={href}>
-      <a href={href} ref={ref} {...rest} />
+      <a href={`/item/${href}`} ref={ref} {...rest} />
     </LinkWithHoverCard>
   );
 });

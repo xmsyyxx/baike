@@ -1,19 +1,22 @@
 import Skeleton from "@mui/material/Skeleton";
 import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio";
+import { imageSuffix } from "../../lib/init";
 
 export const CardContents = (props) => {
   const { item, image, tags, text, isClickable = true } = props;
   const imgUrl =
-    image ||
-    "https://wikioss.xhemj.work/static/ersswiki-placeholder-image-1.jpg";
+    image || "https://cdn.erssbk.com/static/ersswiki-placeholder-image-1.jpg";
 
   return (
     <div className="card w-full max-w-full h-full bg-base-100 shadow-xl image-full mb-4">
       <div className="w-auto h-auto">
         <picture>
-          <source srcSet={imgUrl + "/card.webp"} type="image/webp" />
+          <source
+            srcSet={imgUrl + imageSuffix.twitter_card_webp}
+            type="image/webp"
+          />
           <img
-            src={imgUrl + "/card.jpg"}
+            src={imgUrl + imageSuffix.twitter_card_jpg}
             alt={item}
             className="w-full h-full object-cover"
           />

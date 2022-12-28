@@ -16,9 +16,8 @@ export default function MyApp({ Component, pageProps }) {
         defer
         data-website-id="8f7c6463-9ca3-48a1-b82b-55bef7bd0cc9"
         data-host-url="https://a.xhemj.work"
-        src="https://wikioss.xhemj.work/js/wiki.js"
+        src="https://cdn.erssbk.com/js/wiki.js"
       />
-      <div id="modal-controller"></div>
     </>
   );
 }

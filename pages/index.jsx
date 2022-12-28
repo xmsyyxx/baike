@@ -19,7 +19,7 @@ export default function Index() {
         >
           <div className="my-2 mx-auto flex flex-row lg:flex-col">
             <img
-              src="https://wikioss.xhemj.work/static/logo/v3/512x512.png"
+              src="https://cdn.erssbk.com/static/logo/v3/512x512.png"
               alt="耳斯百科"
               className="w-20 h-20 lg:w-40 lg:h-40 m-0 lg:mx-auto"
             />

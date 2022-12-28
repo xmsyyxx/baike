@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Link from "next/link";
 import { useMount } from "../../lib/hooks";
 import { randomNum } from "../../lib/init";
 import IconReload from "../icons/IconReload";
@@ -49,9 +48,9 @@ export default function WikiSuggestion(props) {
         <ul className={styles.list}>
           {suggestionList.map((item, index) => (
             <li key={index + item}>
-              <Link href={path + item}>
-                <a className={styles.item}>{item}</a>
-              </Link>
+              <a href={path + item} className={styles.item}>
+                {item}
+              </a>
               {index !== suggestionList.length - 1 && (
                 <span className={styles.separator}>|</span>
               )}

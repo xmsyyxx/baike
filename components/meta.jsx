@@ -5,7 +5,7 @@ const Meta = () => {
       <meta name="theme-color" content="#5676dc" />
       <link
         rel="apple-touch-icon"
-        href="https://wikioss.xhemj.work/static/logo/v3/512x512.png"
+        href="https://cdn.erssbk.com/static/logo/v3/512x512.png"
       />
     </Head>
   );

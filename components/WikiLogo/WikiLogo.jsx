@@ -15,10 +15,10 @@ export default function WikiLogo(props) {
           <source
             type="image/webp"
             srcSet="
-            https://wikioss.xhemj.work/static/logo/v3/512x512.png/normal.webp
+            https://cdn.erssbk.com/static/logo/v3/512x512.png?fmt=webp
           "
           />
-          <img src="https://wikioss.xhemj.work/static/logo/v3/512x512.png" />
+          <img src="https://cdn.erssbk.com/static/logo/v3/512x512.png" />
         </picture>
       </div>
       <span className={styles.text}>耳斯百科</span>

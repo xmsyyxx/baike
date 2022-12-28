@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React, { useEffect, useState, useRef } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import { isSupportWebp } from "../../lib/init";
+import { imageSuffix, isSupportWebp } from "../../lib/init";
 import { useImageFullyLoaded } from "../../lib/hooks/useImageFullyLoaded";
 import IconUp from "../icons/IconUp";
 import { Image } from "./Image";
@@ -11,8 +11,12 @@ import styles from "./WikiPicture.module.scss";
  * 百科正文和其它组件中的图片组件
  */
 export default function WikiPicture(props) {
-  const { alt, clickable = true, normalSuffix = "/normal" } = props;
-  const webpSuffix = normalSuffix + ".webp";
+  const {
+    alt,
+    clickable = true,
+    webpSuffix = imageSuffix.normal_webp,
+    normalSuffix = imageSuffix.normal_jpg,
+  } = props;
   const _src = String(props.src).split("?");
   const src = _src?.[0] ? _src[0] : _src;
   const imageSize = _src?.[1] ? _src[1] : "x";
@@ -31,7 +35,7 @@ export default function WikiPicture(props) {
   };
 
   useEffect(() => {
-    const _suffix = normalSuffix + (isSupportWebp() ? ".webp" : ".jpg");
+    const _suffix = isSupportWebp() ? webpSuffix : normalSuffix;
     setImageURL(src + (isNeedShowNormalImage() ? "" : _suffix));
   }, [src]);
 

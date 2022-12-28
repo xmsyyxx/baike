@@ -2,7 +2,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
   images: {
-    domains: ["wikioss.xhemj.work"],
+    domains: ["cdn.erssbk.com"],
   },
   // assetPrefix: isProd ? "https://wikidev.xhemj.work" : undefined,
   webpack: function (config) {

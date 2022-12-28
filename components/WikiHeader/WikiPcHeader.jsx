@@ -12,9 +12,9 @@ export default function WikiPcHeader() {
             <picture className={styles.image}>
               <source
                 type="image/webp"
-                srcSet="https://wikioss.xhemj.work/static/logo/v3/512x512.png/normal.webp"
+                srcSet="https://cdn.erssbk.com/static/logo/v3/512x512.png?fmt=webp"
               />
-              <img src="https://wikioss.xhemj.work/static/logo/v3/512x512.png" />
+              <img src="https://cdn.erssbk.com/static/logo/v3/512x512.png" />
             </picture>
           </div>
           <Link href="/">耳斯百科</Link>

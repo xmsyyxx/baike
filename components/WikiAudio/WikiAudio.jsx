@@ -29,8 +29,7 @@ export default function WikiAudio(props) {
               name: name,
               artist: "耳斯百科",
               url: src,
-              cover:
-                "https://wikioss.xhemj.work/static/logo/v3/white.png/normal.webp",
+              cover: "https://cdn.erssbk.com/static/logo/v3/white.png",
             },
           ],
           //   lrcType: 2,

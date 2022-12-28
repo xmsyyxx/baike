@@ -1,5 +1,6 @@
 import Skeleton from "@mui/material/Skeleton";
 import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio";
+import { imageSuffix } from "../../lib/init";
 
 export const TextContents = (props) => {
   const { item, image, text } = props;
@@ -15,16 +16,22 @@ export const TextContents = (props) => {
         {image && (
           <AspectRatioPrimitive.Root ratio={16 / 9} className="mb-2">
             <picture>
-              <source srcSet={image + "/twitter_card.webp"} type="image/webp" />
+              <source
+                srcSet={image + imageSuffix.twitter_card_webp}
+                type="image/webp"
+              />
               <img
-                src={image + "/twitter_card.jpg"}
+                src={image + imageSuffix.twitter_card_jpg}
                 alt={item}
                 className="w-full h-full object-cover mb-2 rounded-md bg-slate-50"
               />
             </picture>
           </AspectRatioPrimitive.Root>
         )}
-        <p className="block min-h-16 max-h-32 overflow-hidden indent-0 m-0">
+        <p
+          className="block min-h-16 max-h-32 overflow-hidden indent-0 m-0 
+        line-clamp-3 lg:line-clamp-4"
+        >
           <strong className="font-bold">{item}</strong>：{text}
         </p>
         <div className="flex justify-end mt-2">

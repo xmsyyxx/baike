@@ -2,6 +2,7 @@ import classNames from "classnames";
 import Head from "next/head";
 import React, { Fragment, useEffect, useState } from "react";
 import { getStaticProps, getStaticPaths } from "../../lib/getStaticData";
+import { imageSuffix } from "../../lib/init";
 import Meta from "../../components/meta";
 import WikiRenderer from "../../components/WikiRenderer/WikiRenderer";
 import Header from "../../components/WikiHeader/Header";
@@ -110,8 +111,8 @@ export default function WikiItem(props) {
                   <WikiPicture
                     src={wikiImgObj.url}
                     alt={wikiImgObj.title || title}
-                    normalSuffix="/twitter_card"
-                    thumbSuffix="/twitter_card"
+                    webpSuffix={imageSuffix.twitter_card_webp}
+                    normalSuffix={imageSuffix.twitter_card_jpg}
                   />
                 )}
                 {DetailsContent}
